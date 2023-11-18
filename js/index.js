@@ -259,76 +259,283 @@ const factoresPrimos = () => {
   if (!esNumeroEntero(numero)) {
     return;
   } else {
-    let descomponer= ""
+    let descomponer = "";
     numero = parseInt(numero);
     let dividir = 2;
     while (Math.abs(numero) != 1) {
       if (numero % dividir === 0) {
         numero = numero / dividir;
         // console.log(dividir)
-        descomponer = descomponer+dividir.toString() +"x";
+        descomponer = descomponer + dividir.toString() + "x";
       } else {
         dividir++;
       }
     }
-    console.log(descomponer.slice(0,-1))
+    console.log(descomponer.slice(0, -1));
   }
 };
 // factoresPrimos();
 
 // Crear un programa que pida al usuario una fecha (día, mes y año) y luego muestre si es válida o no. Una fecha es válida si cumple con ciertas condiciones, como la cantidad de días en el mes y si es un año bisiesto o no.
-const fechaValida = ()=>{
-    let dia = prompt("Ingrese día"); 
-    let mes = prompt("Ingrese mes"); 
-    let anio = prompt("Ingrese año");
-    if(!esNumeroEntero(dia) ||!esNumeroEntero(mes) || !esNumeroEntero(anio)){
-        return;
+const fechaValida = () => {
+  let dia = prompt("Ingrese día");
+  let mes = prompt("Ingrese mes");
+  let anio = prompt("Ingrese año");
+  if (!esNumeroEntero(dia) || !esNumeroEntero(mes) || !esNumeroEntero(anio)) {
+    return;
+  } else {
+    dia = parseInt(dia);
+    mes = parseInt(mes);
+    anio = parseInt(anio);
+    if (mes < 1 || mes > 12) {
+      console.log(`${dia}/${mes}/${anio} Fecha no valida`);
+      return;
     }
-    else{
-        dia = parseInt(dia);
-        mes = parseInt(mes);
-        anio = parseInt(anio);
-        if (mes < 1 || mes > 12) {
-            console.log(`${dia}/${mes}/${anio} Fecha no valida`)
-            return;
-        }
-        
-        if (anio < 1) {
-              console.log(`${dia}/${mes}/${anio} Fecha no valida`)
-              
-            return;
-          }
-          let diasDelMes = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-          let esBisiesto = (anio % 4 == 0 && anio % 100 != 0) || anio % 400 == 0;
-        
-          // Validación
-          if (esBisiesto && mes == 2) {
-            if(dia <= 29){
-                console.log(`${dia}/${mes}/${anio} Fecha valida`)
-            }
-            else{
-                console.log(`${dia}/${mes}/${anio} Fecha no valida`)
-            }
-        } else {
-            if(dia <= diasDelMes[mes - 1]){
-                console.log(`${dia}/${mes}/${anio} Fecha valida`)
-            }
-            else{
-                console.log(`${dia}/${mes}/${anio} Fecha no valida`)
-            }
-          }
-    } 
-}
+
+    if (anio < 1) {
+      console.log(`${dia}/${mes}/${anio} Fecha no valida`);
+
+      return;
+    }
+    let diasDelMes = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    let esBisiesto = (anio % 4 == 0 && anio % 100 != 0) || anio % 400 == 0;
+
+    // Validación
+    if (esBisiesto && mes == 2) {
+      if (dia <= 29) {
+        console.log(`${dia}/${mes}/${anio} Fecha valida`);
+      } else {
+        console.log(`${dia}/${mes}/${anio} Fecha no valida`);
+      }
+    } else {
+      if (dia <= diasDelMes[mes - 1]) {
+        console.log(`${dia}/${mes}/${anio} Fecha valida`);
+      } else {
+        console.log(`${dia}/${mes}/${anio} Fecha no valida`);
+      }
+    }
+  }
+};
 // fechaValida();
 
 //TAREA 1 Switch
 
 // 1) Crea un programa que reciba un número del 1 al 12 y muestre el nombre del mes correspondiente.
+const mesPorNumero = () => {
+  let mes = prompt("Ingrese mes");
+  if (!esNumeroEntero(mes)) {
+    return;
+  } else {
+    mes = parseInt(mes);
+    switch (mes) {
+      case 1:
+        console.log("Enero");
+        break;
+      case 2:
+        console.log("Febrero");
+        break;
+      case 3:
+        console.log("Marzo");
+        break;
+      case 4:
+        console.log("Abril");
+        break;
+      case 5:
+        console.log("Mayo");
+        break;
+      case 6:
+        console.log("Junio");
+        break;
+      case 7:
+        console.log("Julio");
+        break;
+      case 8:
+        console.log("Agosto");
+        break;
+      case 9:
+        console.log("Setiembre");
+        break;
+      case 10:
+        console.log("Octubre");
+        break;
+      case 11:
+        console.log("Noviembre");
+        break;
+      case 12:
+        console.log("Diciembre");
+        break;
+      default:
+        console.log("Ingrese mes valido");
+        break;
+    }
+  }
+};
+// mesPorNumero();
+
 // 2) Crea un programa que reciba un número del 1 al 7 y muestre el día de la semana correspondiente.
+const diaSemanal = () => {
+  let dia = prompt("Ingrese dia");
+  if (!esNumeroEntero(dia)) {
+    return;
+  } else {
+    dia = parseInt(dia);
+    switch (dia) {
+      case 1:
+        console.log("Lunes");
+        break;
+      case 2:
+        console.log("Martes");
+        break;
+      case 3:
+        console.log("Miercoles");
+        break;
+      case 4:
+        console.log("Jueves");
+        break;
+      case 5:
+        console.log("Viernes");
+        break;
+      case 6:
+        console.log("Sabado");
+        break;
+      case 7:
+        console.log("Domingo");
+        break;
+      default:
+        console.log("Ingrese día valido");
+        break;
+    }
+  }
+};
+//   diaSemanal();
+
 // 3) Crea un programa que reciba un carácter y muestre si es una vocal o una consonante.
+const vocalOConsonante = () => {
+  let letra = prompt("Ingrese una letra");
+  if (!esSoloPalabra(letra) || letra.length > 1) {
+    return;
+  } else {
+    switch (letra) {
+      case "a":
+        console.log("Es vocal");
+        break;
+      case "e":
+        console.log("Es vocal");
+        break;
+      case "i":
+        console.log("Es vocal");
+        break;
+      case "o":
+        console.log("Es vocal");
+        break;
+      case "u":
+        console.log("Es vocal");
+        break;
+      default:
+        console.log("Es consonante");
+        break;
+    }
+  }
+};
+// vocalOConsonante();
+
 // 4) Crea un programa que reciba un número del 1 al 5 y muestre el nombre del día de la semana correspondiente a esa posición en un arreglo.
+const diaSemanalLaboral = () => {
+  let dia = prompt("Ingrese dia");
+  if (!esNumeroEntero(dia)) {
+    return;
+  } else {
+    dia = parseInt(dia);
+    let dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"];
+    switch (dia) {
+      case 1:
+        console.log(dias[dia - 1]);
+        break;
+      case 2:
+        console.log(dias[dia - 1]);
+        break;
+      case 3:
+        console.log(dias[dia - 1]);
+        break;
+      case 4:
+        console.log(dias[dia - 1]);
+        break;
+      case 5:
+        console.log(dias[dia - 1]);
+        break;
+      default:
+        console.log("Ingrese día de los 5 valido");
+        break;
+    }
+  }
+};
+//   diaSemanalLaboral();
+
 // 5) Crea un programa que reciba una letra y muestre si es mayúscula o minúscula.
+const mayusMinusSwitch = () => {
+  let letra = prompt("Ingrese una letra");
+  if (!esSoloPalabra(letra) || letra.length > 1) {
+    return;
+  } else {
+    switch (letra) {
+      case letra.toUpperCase():
+        console.log("Es mayúscula");
+        break;
+
+      default:
+        console.log("Es minúscula");
+        break;
+    }
+  }
+};
+// mayusMinusSwitch();
+
 // 6) Crea un programa que reciba una nota del 0 al 10 y muestre la calificación correspondiente (suspenso, aprobado, notable, sobresaliente).
+const solicitarNota = () => {
+    nota = prompt("Ingrese nota")
+  if (!esNumeroDecimal(nota)) {
+    return;
+  } else {
+    nota = Math.round(parseFloat(nota));
+    // console.log(nota)
+    switch (nota) {
+      case 1:
+        console.log("Suspenso");
+        break;
+      case 2:
+        console.log("Suspenso");
+        break;
+      case 3:
+        console.log("Suspenso");
+        break;
+      case 4:
+        console.log("Suspenso");
+        break;
+      case 5:
+        console.log("Aprobado");
+        break;
+      case 6:
+        console.log("Aprobado");
+        break;
+      case 7:
+        console.log("Notable");
+        break;
+      case 8:
+        console.log("Notable");
+        break;
+      case 9:
+        console.log("Sobresaliente");
+        break;
+      case 10:
+        console.log("Sobresaliente");
+        break;
+      default:
+        console.log("Ingrese una nota válida")
+        break;
+    }
+  }
+};
+solicitarNota();
 
 //TAREA 2 Ciclos
 
