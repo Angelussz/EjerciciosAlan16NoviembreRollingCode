@@ -535,38 +535,289 @@ const solicitarNota = () => {
     }
   }
 };
-solicitarNota();
+// solicitarNota();
 
 //TAREA 2 Ciclos
 
 // Imprimir los números pares del 2 al 20 en la consola.
-// Recorrer un string y mostrar en la consola cada letra en mayúsculas.
-// Pedir al usuario que ingrese un número y mostrar en la consola los números del 1 al número ingresado.
-// Pedir al usuario que ingrese una serie de números separados por coma y mostrar en la consola el número más grande de la serie.
-// Pedir al usuario que ingrese una palabra y mostrar en la consola si la palabra es un palíndromo o no.
-// Pedir al usuario que ingrese una serie de números separados por coma y mostrar en la consola la suma de los números pares.
-// Pedir al usuario que ingrese una serie de números separados por coma y mostrar en la consola la cantidad de números negativos.
-// Pedir al usuario que ingrese un número y mostrar en la consola todos los números impares desde el 1 hasta el número ingresado.
-// Pedir al usuario que ingrese una serie de números separados por coma y mostrar en la consola el número más pequeño de la serie.
-// Pedir al usuario que adivine un número generado aleatoriamente entre 1 y 100. Mostrar en la consola si el usuario adivinó o no el número y la cantidad de intentos que le tomó.
-// Pedir al usuario que ingrese una serie de números separados por coma y mostrar en la consola la cantidad de números pares.
+const numerosPares2al20 = ()=>{
+    for (let i = 2; i <= 20; i++) {
+        if(i%2===0){
+            console.log(i);
+        }
+    }
+}
+// numerosPares2al20();
 
+// Recorrer un string y mostrar en la consola cada letra en mayúsculas.
+const letrasEnMayuscula = ()=>{
+    let cadenaTexto = prompt("Ingrese texto")
+    if(!esSoloPalabra()){
+        return;
+    }
+    for (let i = 0; i <= cadenaTexto.length; i++) {
+        console.log(cadenaTexto.charAt(i).toUpperCase());
+    }
+}
+// letrasEnMayuscula();
+
+// Pedir al usuario que ingrese un número y mostrar en la consola los números del 1 al número ingresado.
+const contarHastaIngresar = ()=>{
+    let numero = prompt("Ingrese número");
+    if(!esNumeroEntero(numero)&& parseInt(numero)>0){
+        return
+    }
+    numero = parseInt(numero);
+    for (let i = 1; i <= numero; i++) {
+        console.log(i);
+        
+    }
+}
+// contarHastaIngresar();
+
+// Pedir al usuario que ingrese una serie de números separados por coma y mostrar en la consola el número más grande de la serie.
+const serieNumeros = ()=>{
+    let numero = prompt("Ingrese número separados por coma");
+    let numeros = [] 
+    let numeroaux = "";
+    for (let i = 0; i < numero.length; i++) {
+        if(numero.charAt(i) === ","){
+            numeros.push(parseInt(numeroaux));
+            numeroaux = "";
+            continue;
+        }
+        numeroaux += numero.charAt(i);
+        
+        if(numero.length-1 === i){
+            
+            numeros.push(parseInt(numeroaux));
+        }
+
+    }
+    console.log(Math.max(...numeros))
+}
+// serieNumeros();
+
+// Pedir al usuario que ingrese una palabra y mostrar en la consola si la palabra es un palíndromo o no.
+const palindromo = ()=>{
+    let igual = 0;
+    let aux= 0;
+    let palabra = prompt("Ingrese palabra")
+    for (let i = palabra.length-1; i >=0; i--) {
+        if(palabra.charAt(i) === palabra.charAt(aux)){
+            igual++;
+        }
+        aux++;
+    }
+    if(palabra.length === igual){
+        console.log("Es palindromo");
+    }
+    else{
+        console.log("no es palindromo");
+    }
+}
+// palindromo()
+
+// Pedir al usuario que ingrese una serie de números separados por coma y mostrar en la consola la suma de los números pares.
+const serieNumerosSuma = ()=>{
+    let numero = prompt("Ingrese número separados por coma");
+    let numeros = [] 
+    let numeroaux = "";
+    for (let i = 0; i < numero.length; i++) {
+        if(numero.charAt(i) === ","){
+            numeros.push(parseInt(numeroaux));
+            numeroaux = "";
+            continue;
+        }
+        numeroaux += numero.charAt(i);
+        
+        if(numero.length-1 === i){
+            
+            numeros.push(parseInt(numeroaux));
+        }
+
+    }
+    let sumaPares = 0;
+    for (const num of numeros) {
+        if(num % 2 === 0){
+            sumaPares+=num;
+        }
+    }
+    console.log(sumaPares)
+}
+// serieNumerosSuma();
+
+// Pedir al usuario que ingrese una serie de números separados por coma y mostrar en la consola la cantidad de números negativos.
+const serieNumerosNegativos = ()=>{
+    let numero = prompt("Ingrese número separados por coma");
+    let numeros = [] 
+    let numeroaux = "";
+    for (let i = 0; i < numero.length; i++) {
+        if(numero.charAt(i) === ","){
+            numeros.push(parseInt(numeroaux));
+            numeroaux = "";
+            continue;
+        }
+        numeroaux += numero.charAt(i);
+        
+        if(numero.length-1 === i){
+            
+            numeros.push(parseInt(numeroaux));
+        }
+
+    }
+    numeros.forEach((num)=>{
+        if(num<0){
+            console.log(num)
+        }
+    })
+}
+// serieNumerosNegativos();
+
+// Pedir al usuario que ingrese un número y mostrar en la consola todos los números impares desde el 1 hasta el número ingresado.
+const numImpares = () => {
+    let numero = prompt("Ingrese número para saber si es par o impar");
+    if (!esNumeroEntero(numero)) {
+      return;
+    }
+    numero = parseInt(numero);
+    for(let i=1;i<=numero;i++){
+        if(i%2==0){
+            console.log(i);
+        }
+    }
+  };
+// numImpares();
+
+// Pedir al usuario que ingrese una serie de números separados por coma y mostrar en la consola el número más pequeño de la serie.
+const serieNumerosPequenio = ()=>{
+    let numero = prompt("Ingrese número separados por coma");
+    let numeros = [] 
+    let numeroaux = "";
+    for (let i = 0; i < numero.length; i++) {
+        if(numero.charAt(i) === ","){
+            numeros.push(parseInt(numeroaux));
+            numeroaux = "";
+            continue;
+        }
+        numeroaux += numero.charAt(i);
+        
+        if(numero.length-1 === i){
+            
+            numeros.push(parseInt(numeroaux));
+        }
+
+    }
+    console.log(Math.min(...numeros))
+}
+// serieNumerosPequenio();
+
+// Pedir al usuario que adivine un número generado aleatoriamente entre 1 y 100. Mostrar en la consola si el usuario adivinó o no el número y la cantidad de intentos que le tomó.
+const Adivinanza1Al100= ()=>{
+    let numero = parseInt(prompt("Ingrese número"));  
+    let intentos = 0;
+    numAdivinar = Math.floor((Math.random() * (100 - 1 + 1)) + 1);
+    // numAdivinar = 40;
+    while(numAdivinar !== numero){
+        intentos++;
+        numero = parseInt(prompt("Ingrese número"));  
+    }
+    console.log(intentos)
+}
+// Adivinanza1Al100();
+
+// Pedir al usuario que ingrese una serie de números separados por coma y mostrar en la consola la cantidad de números pares.
+const serieNumerosParesCantidad = ()=>{
+    let numero = prompt("Ingrese número separados por coma");
+    let numeros = [] 
+    let numeroaux = "";
+    for (let i = 0; i < numero.length; i++) {
+        if(numero.charAt(i) === ","){
+            numeros.push(parseInt(numeroaux));
+            numeroaux = "";
+            continue;
+        }
+        numeroaux += numero.charAt(i);
+        
+        if(numero.length-1 === i){
+            
+            numeros.push(parseInt(numeroaux));
+        }
+
+    }
+    let cantidad=0;
+    for (const num of numeros) {
+        if(num % 2 === 0){
+            cantidad++;
+        }
+    }
+    console.log(cantidad)
+}
+// serieNumerosParesCantidad();
 //TAREA 3 Arrays
 
 // Dado un array de números, escribir una función que retorne el número más grande del array.
+const ArrayNumerosGrandes = (arrayNums = [22,33,11,104,23,11,-4,32])=>{
+    return(Math.max(...arrayNums))
+}
+// console.log(ArrayNumerosGrandes())
 
 // Dado un array de números, escribir una función que retorne un nuevo array con los números pares del array original.
+const ArrayNumerosPares = (arrayNums = [22,33,11,104,23,11,-4,32])=>{
+    const pares = arrayNums.filter(num =>{
+        return num%2==0;
+    })
+    return(pares)
+}
+// console.log(ArrayNumerosPares());
 
 // Dado un array de números, escribir una función que retorne la suma de todos los números del array.
+const ArrayNumerosSuma = (arrayNums = [22,33,11,104,23,11,-4,32])=>{
+     return arrayNums.reduce((a, b) => a + b, 0)
+}
+// console.log(ArrayNumerosSuma());
 
 // Dado un array de strings, escribir una función que retorne un nuevo array con todos los strings en mayúsculas.
+const ArrayMayusculas = (arrayPalabras = ["hola","como","estas","yo","muy","bien","gracias","por","preguntar"])=>{
+    return arrayPalabras.map( palabra => palabra.toUpperCase())
+}
+// console.log(ArrayMayusculas());
 
 // Dado un array de números y un número X, escribir una función que retorne un nuevo array con todos los números del array original que sean mayores que X.
+const ArrayMayoresA = (arrayNums = [22,33,11,104,23,11,-4,32],numeroX=30)=>{
+    return arrayNums.filter( num => num>numeroX)
+}
+// console.log(ArrayMayoresA());
 
 // Dado un array de números, escribir una función que retorne la suma de todos los números del array. Además, si algún número es mayor que 10, agregarlo a un nuevo array de "números grandes".
+const ArraySumayMayores10 = (arrayNums = [22,3,10,104,2,11,-4,32])=>{
+    return condiciones = {
+        sumArray:ArrayNumerosSuma(arrayNums),
+        mayor10:ArrayMayoresA(arrayNums,10)
+    }
+}
+// console.log(ArraySumayMayores10);
 
 // Dado un array de strings, escribir una función que retorne un nuevo array con todos los strings que tengan más de 5 caracteres.
+const ArrayMayores5Caracteres = (arrayPalabras = ["hola","como","estas","yo","muy","bien","gracias","por","preguntar"])=>{
+    return arrayPalabras.filter( palabra => palabra.length >5)
+}
+// console.log(ArrayMayores5Caracteres());
 
 // Dado un array de strings, escribir una función que retorne un nuevo array con todos los strings que tengan más de 5 caracteres y que empiecen con la letra "a".
+const ArrayMayores5CaracteresyLetraA = (arrayPalabras = ["hola","como","estas","yo","muy","bien","gracias","por","preguntar","alabarda","azul","aña","assdsd","asssss"])=>{
+    return arrayPalabras.filter( palabra => palabra.length >5 && palabra.charAt(0).toLocaleLowerCase()=="a")
+}
+// console.log(ArrayMayores5CaracteresyLetraA());
 
 // Dado un array de números y un número X, escribir una función que retorne un nuevo array con todos los números del array original que sean mayores que X. Además, cortar el array resultante para que tenga solamente los primeros 3 números.
+const arrayMayoresXYPrimeros3 = (arrayNums = [22,33,11,104,23,11,-4,32],numeroX=30)=>{
+    let arrayResultante = ArrayMayoresA(arrayNums,numeroX);
+    if(arrayResultante.length>3){
+        return arrayResultante;
+    }
+    else{
+        return arrayResultante.slice(0,3);
+    }
+}
+// console.log(arrayMayoresXYPrimeros3())
